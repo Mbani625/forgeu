@@ -97,7 +97,18 @@ export default function WorkoutLog({ onClose }) {
                   <p>⏱ Duration: {entry.duration} minutes</p>
                 )}
 
-                {entry.type === "lifting" && (
+                {entry.type === "lifting" && Array.isArray(entry.setDetails) ? (
+                  <div className="set-details">
+                    <p>💪 Lifting Sets:</p>
+                    <ul>
+                      {entry.setDetails.map((set, i) => (
+                        <li key={i}>
+                          Set {i + 1}: {set.reps} reps @ {set.weight} lbs
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
                   <p>
                     Sets: {entry.sets || "—"} | Reps: {entry.reps || "—"} |
                     Weight: {entry.weight || "—"} lbs

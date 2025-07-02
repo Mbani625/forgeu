@@ -48,3 +48,13 @@
   padding-right: 8px; /* Prevents text being hidden under scrollbar */
   margin-top: 1rem;
 }
+
+.set-details ul {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.set-details li {
+  font-size: 0.9rem;
+  color: #a0e7ff;
+}

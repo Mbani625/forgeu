@@ -182,6 +182,15 @@ export default function LevelUp({ onClose }) {
                       <span>Set {index + 1}</span>
                       <input
                         type="number"
+                        placeholder="Weight"
+                        value={set.weight}
+                        onChange={(e) =>
+                          handleSetChange(index, "weight", e.target.value)
+                        }
+                        min="0"
+                      />
+                      <input
+                        type="number"
                         placeholder="Reps"
                         value={set.reps}
                         onChange={(e) =>
@@ -189,15 +198,6 @@ export default function LevelUp({ onClose }) {
                         }
                         required
                         min="1"
-                      />
-                      <input
-                        type="number"
-                        placeholder="Weight"
-                        value={set.weight}
-                        onChange={(e) =>
-                          handleSetChange(index, "weight", e.target.value)
-                        }
-                        min="0"
                       />
                       {liftingSets.length > 1 && (
                         <button type="button" onClick={() => removeSet(index)}>
