@@ -1,10 +1,11 @@
 import React from "react";
-import "../styles/codex.css"; // Adjust if codex has its own styles
+import "../styles/global.css";
+import "../styles/codex.css";
 
 export default function Codex({ onClose }) {
   return (
     <div className="modal-overlay">
-      <div className="modal-box codex-modal">
+      <div className="modal-box ">
         <button className="close-button" onClick={onClose}>
           X
         </button>

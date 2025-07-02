@@ -90,6 +90,7 @@ body {
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
   text-align: center;
+  overflow-y: auto;
 }
 
 /* Close Button */
