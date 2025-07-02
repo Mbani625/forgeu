@@ -12,6 +12,7 @@ import Login from "./Login";
 import "../styles/global.css";
 import Codex from "../utils/Codex"; // or wherever you're putting it
 import Gear from "../utils/Gear";
+import { startNetLinesCanvas } from "../components/NetLinesBackground";
 
 function Home() {
   const [user, setUser] = useState(null);
@@ -43,61 +44,79 @@ function Home() {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    if (authChecked && user) {
+      // Delay 1 frame to ensure canvas exists
+      requestAnimationFrame(() => {
+        startNetLinesCanvas();
+      });
+    }
+  }, [authChecked, user]);
+
   if (!authChecked) return null;
   if (!user) return <Login />;
 
   return (
-    <div className="home-container">
-      <div className="welcome-box">
-        <div className="button-grid">
-          <button className="home-button" onClick={() => setShowLevelUp(true)}>
-            [ LEVEL UP ]
-          </button>
-          <button
-            className="home-button"
-            onClick={() => setShowWorkoutLog(true)}
-          >
-            [ LOG ]
-          </button>
-          <button
-            className="home-button"
-            onClick={() => setShowChallenges(true)}
-          >
-            [ CHALLENGES ]
-          </button>
-          <button className="home-button" onClick={() => setShowSquads(true)}>
-            [ SQUADS ]
-          </button>
-          <button className="home-button" onClick={() => setShowStats(true)}>
-            [ STATS]
-          </button>
-          <button className="home-button" onClick={() => setShowProfile(true)}>
-            [ PROFILE ]
-          </button>
-          <button className="home-button" onClick={() => setShowGear(true)}>
-            [ GEAR ]
-          </button>
+    <>
+      <canvas id="net-lines-bg"></canvas>
+      <div className="home-container">
+        <div className="welcome-box">
+          <div className="button-grid">
+            <button
+              className="home-button"
+              onClick={() => setShowLevelUp(true)}
+            >
+              [ LEVEL UP ]
+            </button>
+            <button
+              className="home-button"
+              onClick={() => setShowWorkoutLog(true)}
+            >
+              [ LOG ]
+            </button>
+            <button
+              className="home-button"
+              onClick={() => setShowChallenges(true)}
+            >
+              [ CHALLENGES ]
+            </button>
+            <button className="home-button" onClick={() => setShowSquads(true)}>
+              [ SQUADS ]
+            </button>
+            <button className="home-button" onClick={() => setShowStats(true)}>
+              [ STATS ]
+            </button>
+            <button
+              className="home-button"
+              onClick={() => setShowProfile(true)}
+            >
+              [ PROFILE ]
+            </button>
+            <button className="home-button" onClick={() => setShowGear(true)}>
+              [ GEAR ]
+            </button>
 
-          <button className="home-button" onClick={() => setShowCodex(true)}>
-            [ CODEX ]
-          </button>
+            <button className="home-button" onClick={() => setShowCodex(true)}>
+              [ CODEX ]
+            </button>
+          </div>
+          [ The ForgeU System ]
         </div>
-        [ The ForgeU System ]
-      </div>
 
-      {showProfile && <Profile onClose={() => setShowProfile(false)} />}
-      {showWorkoutLog && (
-        <WorkoutLog onClose={() => setShowWorkoutLog(false)} />
-      )}
-      {showLevelUp && <LevelUp onClose={() => setShowLevelUp(false)} />}
-      {showChallenges && (
-        <Challenges onClose={() => setShowChallenges(false)} />
-      )}
-      {showStats && <Stats onClose={() => setShowStats(false)} />}
-      {showSquads && <Squads onClose={() => setShowSquads(false)} />}
-      {showCodex && <Codex onClose={() => setShowCodex(false)} />}
-      {showGear && <Gear onClose={() => setShowGear(false)} />}
-    </div>
+        {showProfile && <Profile onClose={() => setShowProfile(false)} />}
+        {showWorkoutLog && (
+          <WorkoutLog onClose={() => setShowWorkoutLog(false)} />
+        )}
+        {showLevelUp && <LevelUp onClose={() => setShowLevelUp(false)} />}
+        {showChallenges && (
+          <Challenges onClose={() => setShowChallenges(false)} />
+        )}
+        {showStats && <Stats onClose={() => setShowStats(false)} />}
+        {showSquads && <Squads onClose={() => setShowSquads(false)} />}
+        {showCodex && <Codex onClose={() => setShowCodex(false)} />}
+        {showGear && <Gear onClose={() => setShowGear(false)} />}
+      </div>
+    </>
   );
 }
 
