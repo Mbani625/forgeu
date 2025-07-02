@@ -84,6 +84,7 @@ body {
   border-radius: 1rem;
   width: 90%;
   max-width: 450px;
+  max-height: 80vh;
   color: var(--text-white);
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);

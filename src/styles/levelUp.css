@@ -20,7 +20,7 @@
   flex-direction: column;
   width: 90%;
   max-width: 400px;
-  height: 90dvh;
+  height: 80vh;
   background: rgba(0, 15, 30, 0.45);
   padding: 1.5rem;
   border-radius: 1rem;
@@ -29,12 +29,12 @@
   font-family: "Orbitron", sans-serif;
   color: white;
   position: relative;
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .levelup-scrollable {
-  flex: 1;
   overflow-y: auto;
+  max-height: 65vh; /* adjust as needed */
+  padding-right: 6px;
   margin-bottom: 1rem;
 }
 
@@ -78,6 +78,17 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-height: 65vh;
+  overflow-y: auto;
+}
+
+form::-webkit-scrollbar {
+  width: 4px;
+}
+
+form::-webkit-scrollbar-thumb {
+  background-color: #00ffff;
+  border-radius: 6px;
 }
 
 input,
