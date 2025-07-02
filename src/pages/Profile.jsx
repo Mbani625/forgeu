@@ -39,21 +39,14 @@ export default function Profile({ onClose }) {
         <p>
           <strong>XP:</strong> {profile.xp}
         </p>
-        <h3>Stats</h3>
         <p>
-          <strong>Strength:</strong> {profile.stats?.strength || 0}
+          <strong>Join Date:</strong>{" "}
+          {profile.joinedAt
+            ? new Date(profile.joinedAt).toLocaleDateString()
+            : "N/A"}
         </p>
         <p>
-          <strong>Agility:</strong> {profile.stats?.agility || 0}
-        </p>
-        <p>
-          <strong>Endurance:</strong> {profile.stats?.endurance || 0}
-        </p>
-        <p>
-          <strong>Speed:</strong> {profile.stats?.speed || 0}
-        </p>
-        <p>
-          <strong>Flexibility:</strong> {profile.stats?.flexibility || 0}
+          <strong>Title:</strong> {profile.title || "Adventurer"}
         </p>
       </div>
     </div>
