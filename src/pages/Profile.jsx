@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { auth, db } from "../firebase/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
-import "../styles/profile.css";
+import "../styles/global.css";
 
 export default function Profile({ onClose }) {
   const [profile, setProfile] = useState(null);
@@ -21,8 +21,8 @@ export default function Profile({ onClose }) {
   if (!profile) return null;
 
   return (
-    <div className="profile-modal">
-      <div className="profile-card">
+    <div className="modal-overlay">
+      <div className="modal-box">
         <button className="close-button" onClick={onClose}>
           ✕
         </button>

@@ -52,7 +52,7 @@ export default function WorkoutLog({ onClose }) {
 
   return (
     <div className="modal-overlay">
-      <div className="modal-content">
+      <div className="modal-box">
         <button className="close-button" onClick={onClose}>
           ✕
         </button>

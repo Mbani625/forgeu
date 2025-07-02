@@ -142,7 +142,7 @@ const Stats = ({ onClose }) => {
     <div className="modal-overlay">
       <div className="modal-box stats-modal">
         <button className="close-button" onClick={onClose}>
-          ×
+          X
         </button>
         <h2 className="modal-title">Stats Overview</h2>
         <div className="level-display">Level: {level}</div>

@@ -6,7 +6,7 @@ export default function Codex({ onClose }) {
     <div className="modal-overlay">
       <div className="modal-box codex-modal">
         <button className="close-button" onClick={onClose}>
-          ×
+          X
         </button>
         <h2 className="modal-title">📘 Stat Codex</h2>
 

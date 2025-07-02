@@ -6,7 +6,7 @@ export default function Gear({ onClose }) {
     <div className="modal-overlay">
       <div className="modal-box gear-modal">
         <button className="close-button" onClick={onClose}>
-          ×
+          X
         </button>
         <h2 className="modal-title">🛡️ Gear System (Coming Soon)</h2>
         <p>
