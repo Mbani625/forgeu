@@ -5,14 +5,14 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh; /* dynamically adjusts for safe area on iOS */
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* 🔥 align to top instead of center */
-  padding-top: 2vh; /* slight spacing from the top */
+  align-items: flex-start;
+  padding-top: 2vh;
   z-index: 999;
-  overflow: hidden; /* prevent outer scrollbars */
+  overflow: hidden;
 }
 
 .levelup-content {
@@ -20,7 +20,7 @@
   flex-direction: column;
   width: 90%;
   max-width: 400px;
-  height: 90vh;
+  height: 90dvh;
   background: rgba(0, 15, 30, 0.45);
   padding: 1.5rem;
   border-radius: 1rem;
@@ -29,12 +29,12 @@
   font-family: "Orbitron", sans-serif;
   color: white;
   position: relative;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .levelup-scrollable {
+  flex: 1;
   overflow-y: auto;
-  max-height: 65vh; /* adjust as needed */
-  padding-right: 6px;
   margin-bottom: 1rem;
 }
 
