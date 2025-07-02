@@ -136,108 +136,112 @@ export default function LevelUp({ onClose }) {
           </button>
           <h2>Level Up</h2>
           <form onSubmit={handleSubmit}>
-            <label>
-              Exercise Type:
-              <select
-                value={exerciseType}
-                onChange={(e) => setExerciseType(e.target.value)}
-              >
-                <option value="cardio">Cardio</option>
-                <option value="lifting">Lifting</option>
-                <option value="stretching">Stretching</option>
-              </select>
-            </label>
-
-            {exerciseType === "cardio" && (
+            <div className="levelup-scrollable">
               <label>
-                Cardio Subtype:
+                Exercise Type:
                 <select
-                  value={cardioSubtype}
-                  onChange={(e) => setCardioSubtype(e.target.value)}
+                  value={exerciseType}
+                  onChange={(e) => setExerciseType(e.target.value)}
                 >
-                  <option value="distance">Cardio (Distance)</option>
-                  <option value="sprints">Cardio (Sprints)</option>
+                  <option value="cardio">Cardio</option>
+                  <option value="lifting">Lifting</option>
+                  <option value="stretching">Stretching</option>
                 </select>
               </label>
-            )}
 
-            <label>
-              Exercise Name:
-              <input
-                type="text"
-                name="name"
-                value={workout.name}
-                onChange={handleChange}
-                placeholder="e.g., Squats or Sprinting"
-                required
-              />
-            </label>
+              {exerciseType === "cardio" && (
+                <label>
+                  Cardio Subtype:
+                  <select
+                    value={cardioSubtype}
+                    onChange={(e) => setCardioSubtype(e.target.value)}
+                  >
+                    <option value="distance">Cardio (Distance)</option>
+                    <option value="sprints">Cardio (Sprints)</option>
+                  </select>
+                </label>
+              )}
 
-            {exerciseType === "lifting" && (
-              <>
-                <label>Set Details:</label>
-                {liftingSets.map((set, index) => (
-                  <div key={index} className="set-row">
-                    <span>Set {index + 1}</span>
-                    <input
-                      type="number"
-                      placeholder="Reps"
-                      value={set.reps}
-                      onChange={(e) =>
-                        handleSetChange(index, "reps", e.target.value)
-                      }
-                      required
-                      min="1"
-                    />
-                    <input
-                      type="number"
-                      placeholder="Weight"
-                      value={set.weight}
-                      onChange={(e) =>
-                        handleSetChange(index, "weight", e.target.value)
-                      }
-                      min="0"
-                    />
-                    {liftingSets.length > 1 && (
-                      <button type="button" onClick={() => removeSet(index)}>
-                        ✕
-                      </button>
-                    )}
-                  </div>
-                ))}
-                <button
-                  type="button"
-                  className="add-set-button"
-                  onClick={addSet}
-                >
-                  + Add Set
-                </button>
-              </>
-            )}
-
-            {(exerciseType === "cardio" || exerciseType === "stretching") && (
               <label>
-                Duration (minutes):
+                Exercise Name:
                 <input
-                  type="number"
-                  name="duration"
-                  value={workout.duration}
+                  type="text"
+                  name="name"
+                  value={workout.name}
                   onChange={handleChange}
-                  placeholder="e.g., 30"
+                  placeholder="e.g., Squats or Sprinting"
                   required
                 />
               </label>
-            )}
 
-            <label>
-              Notes:
-              <textarea
-                name="notes"
-                value={workout.notes}
-                onChange={handleChange}
-                placeholder="Add any details here..."
-              />
-            </label>
+              {exerciseType === "lifting" && (
+                <>
+                  <label>Set Details:</label>
+                  {liftingSets.map((set, index) => (
+                    <div key={index} className="set-row">
+                      <span>Set {index + 1}</span>
+                      <input
+                        type="number"
+                        placeholder="Reps"
+                        value={set.reps}
+                        onChange={(e) =>
+                          handleSetChange(index, "reps", e.target.value)
+                        }
+                        required
+                        min="1"
+                      />
+                      <input
+                        type="number"
+                        placeholder="Weight"
+                        value={set.weight}
+                        onChange={(e) =>
+                          handleSetChange(index, "weight", e.target.value)
+                        }
+                        min="0"
+                      />
+                      {liftingSets.length > 1 && (
+                        <button type="button" onClick={() => removeSet(index)}>
+                          ✕
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                  <div className="set-button-wrapper">
+                    <button
+                      type="button"
+                      className="add-set-button"
+                      onClick={addSet}
+                    >
+                      + Add Set
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {(exerciseType === "cardio" || exerciseType === "stretching") && (
+                <label>
+                  Duration (minutes):
+                  <input
+                    type="number"
+                    name="duration"
+                    value={workout.duration}
+                    onChange={handleChange}
+                    placeholder="e.g., 30"
+                    required
+                  />
+                </label>
+              )}
+
+              <label>
+                Notes:
+                <textarea
+                  name="notes"
+                  value={workout.notes}
+                  onChange={handleChange}
+                  placeholder="Add any details here..."
+                />
+              </label>
+            </div>
 
             <button type="submit">Log Workout</button>
           </form>

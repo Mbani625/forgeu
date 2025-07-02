@@ -4,29 +4,63 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: flex-start; /* 🔥 align to top instead of center */
+  padding-top: 2vh; /* slight spacing from the top */
   z-index: 999;
+  overflow: hidden; /* prevent outer scrollbars */
 }
 
 .levelup-content {
-  padding: 2rem;
-  border-radius: 1rem;
-  border: 1px solid #00ffff;
-  background: rgba(0, 15, 30, 0.45);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(10px);
-  color: white;
+  display: flex;
+  flex-direction: column;
   width: 90%;
   max-width: 400px;
-  text-align: center;
+  height: 90vh;
+  background: rgba(0, 15, 30, 0.45);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid #00ffff;
   box-shadow: 0 0 12px #00ffff66, 0 0 30px #00ffff22;
   font-family: "Orbitron", sans-serif;
+  color: white;
   position: relative;
+}
+
+.levelup-scrollable {
+  overflow-y: auto;
+  max-height: 65vh; /* adjust as needed */
+  padding-right: 6px;
+  margin-bottom: 1rem;
+}
+
+/* Optional: mobile scrollbar style */
+.levelup-scrollable::-webkit-scrollbar {
+  width: 4px;
+}
+.levelup-scrollable::-webkit-scrollbar-thumb {
+  background-color: #00ffff;
+  border-radius: 6px;
+}
+
+.levelup-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.levelup-content::-webkit-scrollbar-thumb {
+  background-color: #00ffff;
+  border-radius: 6px;
+}
+
+.set-button-wrapper {
+  margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .close-button {
