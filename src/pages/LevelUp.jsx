@@ -20,15 +20,14 @@ export default function LevelUp({ onClose }) {
   const { currentUser } = useContext(AuthContext);
   const [exerciseType, setExerciseType] = useState("cardio");
   const [cardioSubtype, setCardioSubtype] = useState("distance");
-
+  const [currentXp, setCurrentXp] = useState(0);
+  const [currentStats, setCurrentStats] = useState({});
   const [liftingSets, setLiftingSets] = useState([{ reps: "", weight: "" }]);
-
   const [workout, setWorkout] = useState({
     name: "",
     duration: "",
     notes: "",
   });
-
   const [summaryOpen, setSummaryOpen] = useState(false);
   const [appliedBuffs, setAppliedBuffs] = useState([]);
   const [finalXP, setFinalXP] = useState(0);
@@ -113,11 +112,15 @@ export default function LevelUp({ onClose }) {
       stats: updatedStats,
     });
 
+    // 🔥 Set summary state
     setAppliedBuffs(buffsUsed);
     setFinalXP(buffedXP);
     setGainedStats(statGains);
+    setCurrentXp(currentXP); // <- pulled BEFORE update
+    setCurrentStats(userData.stats || {});
     setSummaryOpen(true);
 
+    // 🔄 Reset form
     setWorkout({
       name: "",
       duration: "",
@@ -253,6 +256,8 @@ export default function LevelUp({ onClose }) {
           buffs={appliedBuffs}
           xp={finalXP}
           stats={gainedStats}
+          currentXp={currentXp}
+          currentStats={currentStats}
           onClose={() => {
             setSummaryOpen(false);
             onClose();

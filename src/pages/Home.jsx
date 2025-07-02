@@ -49,40 +49,40 @@ function Home() {
   return (
     <div className="home-container">
       <div className="welcome-box">
-        <h1>Welcome {firestoreUsername ? `, ${firestoreUsername}!` : ""}</h1>
         <div className="button-grid">
           <button className="home-button" onClick={() => setShowLevelUp(true)}>
-            Level Up
+            [ LEVEL UP ]
           </button>
           <button
             className="home-button"
             onClick={() => setShowWorkoutLog(true)}
           >
-            Workout Log
+            [ LOG ]
           </button>
           <button
             className="home-button"
             onClick={() => setShowChallenges(true)}
           >
-            Challenges
+            [ CHALLENGES ]
           </button>
           <button className="home-button" onClick={() => setShowSquads(true)}>
-            Squads
+            [ SQUADS ]
           </button>
           <button className="home-button" onClick={() => setShowStats(true)}>
-            Stats
+            [ STATS]
           </button>
           <button className="home-button" onClick={() => setShowProfile(true)}>
-            Profile
+            [ PROFILE ]
           </button>
           <button className="home-button" onClick={() => setShowGear(true)}>
-            Gear
+            [ GEAR ]
           </button>
 
           <button className="home-button" onClick={() => setShowCodex(true)}>
-            Codex
+            [ CODEX ]
           </button>
         </div>
+        [ The ForgeU System ]
       </div>
 
       {showProfile && <Profile onClose={() => setShowProfile(false)} />}
