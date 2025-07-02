@@ -9,11 +9,21 @@
   --shadow: 0 0 20px var(--accent-blue-glow);
 }
 
+html,
 body {
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
   margin: 0;
   font-family: "Orbitron", system-ui, sans-serif;
   background-color: var(--bg-dark);
   color: var(--text-white);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 /* Welcome + Button Section */
