@@ -49,10 +49,7 @@ function Home() {
   return (
     <div className="home-container">
       <div className="welcome-box">
-        <h1>
-          Welcome to ForgeU{firestoreUsername ? `, ${firestoreUsername}!` : ""}
-        </h1>
-        <p>Select an area to power up:</p>
+        <h1>Welcome {firestoreUsername ? `, ${firestoreUsername}!` : ""}</h1>
         <div className="button-grid">
           <button className="home-button" onClick={() => setShowLevelUp(true)}>
             Level Up
